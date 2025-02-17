@@ -68,3 +68,7 @@ body{
     height: 100vh;
 
 }
+
+.text-cust-color {
+    color: var(--custom-body-text-color)
+}

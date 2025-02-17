@@ -1,10 +1,9 @@
-import React from 'react'
+
 import './GlassCard.css'
 
-function GlassCard({children}) {
+function GlassCard({children, type}) {
   return (
-    <div>
-        Sample
+    <div className={`${type} glass-card col-sm-10 col-md-9 col-lg-5 p-3`}>
         {children}
     </div>
   )
