@@ -1,0 +1,12 @@
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(
+        var(--custom-gradient-start),
+        var(--custom-gradient-end)
+    );
+    z-index: 1;
+    opacity: 60%;
+    
+}
