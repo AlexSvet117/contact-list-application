@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ContactCard.css";
 import GlassCard from "../glassCard/GlassCard";
 import { BsFillBookmarkCheckFill } from "react-icons/bs";
@@ -6,6 +6,9 @@ import { BsFillBookmarkDashFill } from "react-icons/bs";
 import { FcEditImage } from "react-icons/fc";
 import { FcRemoveImage } from "react-icons/fc";
 import { IoMdContact } from "react-icons/io";
+import { addToFavorites, deleteFromFavorites } from "../../utils/api";
+import { useGlobalStore } from "../../hooks/useGlobalStore";
+import { fetchContacts } from "../../utils/api";
 
 function ContactCard({
   keyboard,
@@ -18,19 +21,41 @@ function ContactCard({
   is_favorite,
   phone_number,
 }) {
+    const {store, dispatch} = useGlobalStore();
+    const [isFav, setIsFav] = useState(is_favorite)
+    const handleFavorite = async () => {
+        setIsFav(prev => !prev)
+
+        try {
+            if (isFav) {
+                await deleteFromFavorites(store.user.user_id, id);
+            } else {
+                await addToFavorites(store.user.user_id, id)
+            }
+            const getContactsResponse = await fetchContacts(store.user.user_id);
+            console.log('fetched Contacts:' , getContactsResponse)
+            dispatch({type: 'SET_CONTACTS', payload: getContactsResponse})
+        } catch (e) {
+            console.log(e)
+
+        }
+
+
+
+    }
   return (
     <GlassCard type="glass-contact-card">
       {/* {handle the whole card} */}
       <div className="d-flex justify-content-between">
         {/* {handle the left side} */}
         <div className="d-flex justify-content-start align-items-center">
-          <div>
+          <button onClick ={handleFavorite} className="btn border border-0 m-0 p-0">
             {is_favorite ? (
               <BsFillBookmarkCheckFill className="fs-5 text-primary opacity-75" />
             ) : (
               <BsFillBookmarkDashFill className="fs-5 text-light opacity-25" />
             )}
-          </div>
+          </button>
           <div className="image-containter">
             {base64_image ? (<img
               className="profile-image ms-4"

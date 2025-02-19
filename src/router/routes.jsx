@@ -5,6 +5,7 @@ import Home from '../pages/home/Home.jsx';
 import Login from '../pages/login/Login.jsx';
 import Signup from '../pages/signup/Signup.jsx';
 import ProtectedRoute from './ProtectedRoute.jsx';
+import Favorites from '../pages/favorites/Favorites.jsx';
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,14 @@ export const router = createBrowserRouter([
         element: (
         <ProtectedRoute>
           <Home/>
+        </ProtectedRoute>
+        ),
+       },
+       { 
+        path: '/favorites', 
+        element: (
+        <ProtectedRoute>
+          <Favorites/>
         </ProtectedRoute>
         ),
        },

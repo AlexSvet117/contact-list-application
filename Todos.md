@@ -12,13 +12,14 @@
 
 -[X] Break down the all pages that are needed and place them in its own directories
 
--[ ] Implement all pages 
+-[X] Implement all pages 
    -[X] Signup
       -[ ] Implement Signup - create new user
    -[X] Login
-   -[ ] Home
+   -[X] Home
       -[X] ContactsList
         -[X] ContactCard
+        
 
 -[ ] Integrate API
    -[ ] Login - GET: /api/user/email/:email

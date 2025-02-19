@@ -19,16 +19,16 @@
  */
 export function storeReducer(state, action) {
   switch (action.type) {
-    case 'ADD_TASK':
-      return {
-        ...state,
-        todos: [...state.todos, action.payload.task],
-      };
-    case 'DELETE_TASK':
-      return state.todos.filter((todo) => todo !== action.payload.id);
-    case 'SET_TODOS':
-      return { ...state, todos: action.payload.todos };
-    default:
+    case 'SET_USER_ID':
+      return {...state, user: {...state.user, user_id: action.payload.user_id}}
+
+    case 'SET_AUTH':
+      return {...state, user: {...state.user, isAuthenticated: action.payload.isAuthenticated}}
+
+      case 'SET_CONTACTS':
+        return {...state, contacts: action.payload}
+      default: 
       return state;
+     
   }
 }
