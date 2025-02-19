@@ -2,14 +2,23 @@ import React from 'react'
 import '../signup/Signup.css';
 import GlassCard from '../../components/glassCard/GlassCard';
 import { Link, useNavigate } from 'react-router';
+import { useState } from 'react';
 
 function Login() {
 
     const navigate = useNavigate()
+    const [email, setEmail] = useState('')
 
 
-    const handleOnSubmit = (e) => {
+    const handleOnSubmit = async (e) => {
        e.preventDefault()
+       // verify email is not empty
+       if(!email.trim()) return;
+       // make the fetch request
+       const options = {headers: {'X-Secret-Token': 'qwerty'}}
+       const getUserByEmailResponse = await fetch(`/api/users/email/${email}`, options)
+       const responseData = await getUserByEmailResponse.json()
+       console.log(responseData)
        navigate('/home')
 
 
@@ -26,6 +35,8 @@ function Login() {
               class="form-control p-4"
               id="email"
               placeholder="email..."
+              onChange={(e)=> setEmail(e.target.value)}
+              value={email}
             />
           </div>
           <h6 className="text-center">Don't have an account yet?</h6>

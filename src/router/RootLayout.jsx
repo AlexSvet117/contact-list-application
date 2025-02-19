@@ -1,11 +1,18 @@
-import { Outlet } from 'react-router';
+import { Outlet, useLocation } from 'react-router';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import NavButton from '../components/common/NavButton';
 import Circle from '../components/circle/Circle';
+import { isAuthPath } from '../utils/helpers';
 
 
 function RootLayout() {
+   
+  // function that identifies if the path is auth group
+  
+  const location = useLocation();
+    isAuthPath(location.pathname);
+
   return (
     <>
     <div className="circle-container">
@@ -16,8 +23,17 @@ function RootLayout() {
 
     <div className='main-bg-color min-vh-100 d-flex flex-column'>
       <Navbar>
+        {
+          isAuthPath(location.pathname) ? (<></>) : (<>
+        <NavButton to="/home" text="Contacts"/>
+        <NavButton to="/favorites" text="Favorites"/>
+        <NavButton to="/addcontact" text="Add Contact"/>
+        <NavButton callback={()=> (console.log('Logout'))}to="/login" text="Logout"/>
+        </>)
+
+        }
         {/* Ad dall links here */}
-        <NavButton to="/login" text="Login"/>
+        
       </Navbar>
 
       <main className='flex-grow-1'>

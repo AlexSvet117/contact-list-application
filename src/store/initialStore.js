@@ -35,17 +35,33 @@
  * @author dmytro-ch21
  */
 export const initialState = () => ({
-  // demo for todos - replace with your needed state
-  todos: [
-    {
-      id: '1',
-      title: 'This comes from your global store, delete it!',
-      completed: false,
-    },
-  ],
+  
+  todos: [],
   user: {
     isAuthenticated: false,
-    userId: null,
+    user_id: null,
   },
-  // you can add here more slices (properties in the object) - user, theme, etc...
+  contacts: [
+    {
+    base64_image: "src/assets/images/pexels-simon-robben-55958-614810.jpg",
+    city: "Anytown",
+    country: "USA",
+    email: "john.doe@example.com",
+    full_name: "John Doe",
+    id: 10,
+    is_favorite: true,
+    phone_number: "123-456-7890"
+    },
+    {
+      base64_image: "",
+      city: "Anytown",
+      country: "USA",
+      email: "john.malkovic@example.com",
+      full_name: "John Malkovic",
+      id: 11,
+      is_favorite: false,
+      phone_number: "123-456-7890"
+      }
+  ]
+
 });

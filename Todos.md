@@ -6,14 +6,22 @@
 
 -[X] Install fonts to your project, and apply them to the project
 
--[ ] Define the layout, colors, patterns, backgrounds 
+-[X] Define the layout, colors, patterns, backgrounds 
 
--[ ] Define the components of the layout in the root layout
+-[X] Define the components of the layout in the root layout
 
--[ ] Break down the all pages that are needed and place them in its own directories
+-[X] Break down the all pages that are needed and place them in its own directories
 
 -[ ] Implement all pages 
+   -[X] Signup
+      -[ ] Implement Signup - create new user
+   -[X] Login
+   -[ ] Home
+      -[X] ContactsList
+        -[X] ContactCard
 
 -[ ] Integrate API
-
-
+   -[ ] Login - GET: /api/user/email/:email
+   -[ ] Register - POST: /api/user
+   -[ ] Get Contacts -  GET: /api/user/contacts/
+   -[ ] Get Contact - GET: /api/user/contacts/:code
